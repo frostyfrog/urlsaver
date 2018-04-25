@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Hello AngularJS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script src="hello.js"></script>
+	</head>
+
+	<body class="w3-gray">
+		<span ng-bind="angularText">Default text from server</span>
+		<div class="w3-card-4 w3-margin w3-white" ng-app="submitExample" id="form">
+			<div class="w3-container w3-green">
+				<h2>Add a new bookmark</h2>
+			</div>
+			<form class="w3-container" ng-submit="submit()" ng-controller="NewBookmarkController">
+				<label>URL</label>
+				<input class="w3-input" type="text" ng-model="url" name="url" />
+				<input class="w3-margin-top w3-btn w3-blue" type="submit" id="submit" value="New Bookmark" />
+			</form>
+		</div>
+		<div class="w3-container w3-margin" id="bookmarks" ng-app="listBookmarks">
+			<div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow" ng-controller="OS">
+				<p ng-show="os.Hostname"> Server is {{os.Hostname}}</p>
+			</div>
+			<ul class="w3-ul w3-card-4 w3-white" ng-controller="Bookmarks">
+				<li class="w3-bar" data-ng-repeat="bookmark in bookmarks">
+					<div class="w3-bar-item">
+						<span class="w3-blue">{{bookmark.ID}}</span> <span class="w3-large"><a href="{{bookmark.URL}}">{{bookmark.URL}}</a></span>
+						<span ng-show="bookmark.Title"><br />{{bookmark.Title}}</span>
+						<span class="w3-text-gray" ng-show="bookmark.Title"><br />{{bookmark.Description}}</span>
+					</div>
+				</div>
+			</ul>
+		</div>
+		<script>
+angular.bootstrap(document.getElementById("bookmarks"),['listBookmarks']);
+		</script>
+	</body>
+</html>
